@@ -1,7 +1,8 @@
-# MEAN-Sails-stack
+# MEAN-Sails-CMS
 
-MEAN stack with Sails.js = <a href="https://www.mongodb.com/" target="_blank">MongoDB</a>, <a href="http://sailsjs.org" target="_blank">Sails.js(Express.js)</a>, <a href="https://angularjs.org/" target="_blank">Angular.js 1.5+</a> and <a href="https://nodejs.org/en/" target="_blank">Node.js</a>.
+CMS with MEAN stack with Sails.js = [Mean-Sails-Stack](github.com/kazeidesign/Mean-Sails-Stack).
 
+<!--
 ## Ready to use
 
 This app is ready to use. Clone this repository ``` git clone https://github.com/kazeidesign/Mean-Sails-Stack.git ``` in your server.
@@ -141,4 +142,4 @@ Enjoy!
 * [grunt-scss-lint](https://github.com/ahmednuaman/grunt-scss-lint)
 * [grunt-sass-lint](https://github.com/sasstools/grunt-sass-lint)
 * [grunt-postcss](https://github.com/nDmitry/grunt-postcss)
-
+-->
