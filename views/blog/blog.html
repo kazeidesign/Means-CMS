@@ -1,0 +1,20 @@
+<p>This is the partial for view 1 in /views.</p>
+
+<md-card ng-repeat="post in post.blogTypes">
+    <img ng-src="{{ post.image }}" class="md-card-image" alt="Washed Out" flex="40">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">
+                {{ post.title }}
+            </span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <p>
+            {{ post.post | limitTo:150 }}
+        </p>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-href="#/blog/{{ post.title | underscoreless }}">See more</md-button>
+    </md-card-actions>
+</md-card>

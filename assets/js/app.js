@@ -5,10 +5,18 @@ angular.module('myApp', [
   'ngRoute',
   'ngMaterial',
   'sailsResource',
-  'myApp.view1',
+  'myApp.blog',
   'myApp.view2',
   'myApp.version'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+  $routeProvider.otherwise({redirectTo: '/blog'});
+}])
+
+.filter('underscoreless',function() {
+    return function(input) {
+        if (input) {
+            return input.split(' ').join('_');    
+        }
+    }
+})
