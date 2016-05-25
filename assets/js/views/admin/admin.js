@@ -16,8 +16,13 @@ angular.module('myApp.admin', ['ngRoute'])
   })
   
   .when('/admin/blog/:title', {
-    templateUrl: 'admin/admin_blogDetail.html',
-    controller: 'AdminBlogDetailCtrl as post'
+    templateUrl: 'admin/admin_blogEdit.html',
+    controller: 'AdminBlogEditCtrl as post'
+  })
+  
+  .when('/admin/blog-new', {
+    templateUrl: 'admin/admin_blogNew.html',
+    controller: 'BlogCtrl as post'
   })
   ;
 }])
@@ -26,9 +31,10 @@ angular.module('myApp.admin', ['ngRoute'])
 
 }])
 
-.controller('AdminBlogDetailCtrl', function ($rootScope, sailsResource, $location) {
+.controller('AdminBlogEditCtrl', function ($rootScope, sailsResource, $location) {
   
   var self = this;
+  var blog = sailsResource('Blog');
   
   // Acces to a post
   var postUrlToTitle = $location.path().split("/");
@@ -37,5 +43,25 @@ angular.module('myApp.admin', ['ngRoute'])
   var blogPostTitle = sailsResource('Blog').get({ title: postTitle });
 
   this.blogPost = blogPostTitle;
+
+
+// Cancel
+  this.cancel = function () {
+    self.simpleForm = new simple();
+  };
+
+  // Return an error in the console
+  this.causeError = function () {
+    blog.notFound(
+      function (response) {
+      },
+      function (response) {
+        self.error = response.statusCode;
+      });
+  };
+
+  $rootScope.$on('$sailsResourceCreated', function () {
+    self.created++;
+  });
   
 })

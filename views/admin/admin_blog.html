@@ -16,5 +16,6 @@
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
         <md-button ng-href="#/admin/blog/{{ post.title | underscoreless }}">See more</md-button>
+        <md-button ng-click="post.deleteBlog(blog)">Delete</md-button>
     </md-card-actions>
 </md-card>
