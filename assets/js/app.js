@@ -6,7 +6,7 @@ angular.module('myApp', [
   'ngMaterial',
   'sailsResource',
   'myApp.blog',
-  'myApp.view2',
+  'myApp.admin',
   'myApp.version'
 ]).
 config(['$routeProvider', function($routeProvider) {
