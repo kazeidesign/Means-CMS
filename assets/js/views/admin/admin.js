@@ -4,22 +4,22 @@ angular.module('myApp.admin', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
-  
+
   .when('/admin', {
     templateUrl: 'admin/admin.html',
     controller: 'AdminCtrl'
   })
-  
+
   .when('/admin/blog', {
     templateUrl: 'admin/admin_blog.html',
     controller: 'BlogCtrl as post'
   })
-  
+
   .when('/admin/blog/:title', {
     templateUrl: 'admin/admin_blogEdit.html',
     controller: 'AdminBlogEditCtrl as post'
   })
-  
+
   .when('/admin/blog-new', {
     templateUrl: 'admin/admin_blogNew.html',
     controller: 'BlogCtrl as post'
@@ -32,17 +32,25 @@ angular.module('myApp.admin', ['ngRoute'])
 }])
 
 .controller('AdminBlogEditCtrl', function ($rootScope, sailsResource, $location) {
-  
+
   var self = this;
   var blog = sailsResource('Blog');
-  
+
   // Acces to a post
   var postUrlToTitle = $location.path().split("/");
   var postTitle = postUrlToTitle[3].split('_').join(' ');
-  
-  var blogPostTitle = sailsResource('Blog').get({ title: postTitle });
+
+  var blogPostTitle = blog.get({ title: postTitle });
 
   this.blogPost = blogPostTitle;
+
+  this.saveBlog = function (blog) {
+    blog.$save();
+  };
+
+  this.deleteBlog = function (blog) {
+    blog.$delete();
+  };
 
 
 // Cancel
@@ -63,5 +71,14 @@ angular.module('myApp.admin', ['ngRoute'])
   $rootScope.$on('$sailsResourceCreated', function () {
     self.created++;
   });
-  
+
+  $rootScope.$on('$sailsResourceUpdated', function () {
+    self.updated++;
+  });
+
+  $rootScope.$on('$sailsResourceDestroyed', function () {
+    self.destroyed++;
+    $location.path('/admin/blog');
+  });
+
 })

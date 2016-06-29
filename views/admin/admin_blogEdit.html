@@ -4,21 +4,20 @@
         <md-card-title-text>
             <span class="md-headline">
                 {{ post.blogPost.title }}
+                    {{ post.blogPost.id }}
             </span>
         </md-card-title-text>
     </md-card-title>
     <md-card-content>
-        <p>
-            {{ post.blogPost.post }}
-        </p>
+          <textarea name="name" rows="8" cols="100%"  ng-model="post.blogPost.post"></textarea>
         <ul>
             <li ng-repeat="category in post.blogPost.tags">
-            {{ category.tag }}</li>
+            {{ category.tags }}</li>
         </ul>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
-        <md-button>Action 1</md-button>
-        <md-button>Action 2</md-button>
+        <md-button ng-click="post.saveBlog(post.blogPost)">Save</md-button>
+        <md-button ng-click="post.deleteBlog(post.blogPost)">Delete</md-button>
     </md-card-actions>
 </md-card>
 

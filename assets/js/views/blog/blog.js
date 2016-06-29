@@ -8,7 +8,7 @@ angular.module('myApp.blog', ['ngRoute'])
     templateUrl: 'blog/blog.html',
     controller: 'BlogCtrl as post'
   })
-  
+
   .when('/blog/:title', {
     templateUrl: 'blog/blogDetail.html',
     controller: 'BlogDetailCtrl as post'
@@ -17,15 +17,15 @@ angular.module('myApp.blog', ['ngRoute'])
 }])
 
 .controller('BlogCtrl', function ($rootScope, sailsResource) {
-  
+
   var self = this;
   var blog = sailsResource('Blog');
 
   this.blogResource = blog;
   this.blogForm = new blog();
   this.blogTypes = blog.query();
-  
-  
+
+
 
   this.add = function () {
     self.blogForm.$save(function (newblog) {
@@ -37,21 +37,21 @@ angular.module('myApp.blog', ['ngRoute'])
   this.cancel = function () {
     self.blogForm = new blog();
   };
-  
+
   this.deleteBlog = function (blog) {
     blog.$delete();
   };
-  
+
   this.editBlog = function (blog) {
     blog.$editing = true;
   };
-  
+
   this.saveBlog = function (blog) {
     blog.$save();
     blog.$editing = false;
   };
-  
-  this.causeError = function () { 
+
+  this.causeError = function () {
     blog.notFound(
       function (response) {
       },
@@ -59,31 +59,31 @@ angular.module('myApp.blog', ['ngRoute'])
         self.error = response.statusCode;
       });
   };
-  
+
   $rootScope.$on('$sailsResourceCreated', function () {
     self.created++;
   });
-  
+
   $rootScope.$on('$sailsResourceUpdated', function () {
     self.updated++;
   });
-  
+
   $rootScope.$on('$sailsResourceDestroyed', function () {
     self.destroyed++;
   });
-  
+
 })
 
 .controller('BlogDetailCtrl', function ($rootScope, sailsResource, $location) {
-  
+
   var self = this;
-  
+
   // Acces to a post
   var postUrlToTitle = $location.path().split("/");
   var postTitle = postUrlToTitle[2].split('_').join(' ');
-  
+
   var blogPostTitle = sailsResource('Blog').get({ title: postTitle });
 
   this.blogPost = blogPostTitle;
-  
+
 })
