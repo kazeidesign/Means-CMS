@@ -86,9 +86,6 @@ angular.module('myApp.blog', ['ngRoute'])
 
   this.blogPost = blogPostTitle;
   $rootScope.currentPost= this.blogPost;
-
-  console.log('comment 1.7 ');
-  console.log(blogPostTitle);
 })
 
 .controller('CommentCtrl', function ($rootScope, sailsResource) {
@@ -100,9 +97,12 @@ angular.module('myApp.blog', ['ngRoute'])
   this.commentForm = new comment();
   this.commentTypes = comment.query();
 
+  console.log('comment 2.4');
+
   this.add = function () {
     var currentPostId = $rootScope.currentPost.id;
     console.log('currentPostId is ' + currentPostId);
+    // comment.reply.commentForm.comment = currentPostId;
     self.commentForm.$save(function (newcomment) {
       self.commentTypes.push(newcomment);
     });
