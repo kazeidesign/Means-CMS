@@ -74,10 +74,10 @@ angular.module('myApp.blog', ['ngRoute'])
 
 })
 
-.controller('BlogDetailCtrl', function ($rootScope, sailsResource, $location) {
+.controller('BlogDetailCtrl', function ($rootScope, sailsResource, $location, $routeParams) {
 
   var self = this;
-
+  var blog = sailsResource('Blog');
   // Acces to a post
   var postUrlToTitle = $location.path().split("/");
   var postTitle = postUrlToTitle[2].split('_').join(' ');
@@ -85,5 +85,67 @@ angular.module('myApp.blog', ['ngRoute'])
   var blogPostTitle = sailsResource('Blog').get({ title: postTitle });
 
   this.blogPost = blogPostTitle;
+  $rootScope.currentPost= this.blogPost;
 
+  console.log('comment 1.7 ');
+  console.log(blogPostTitle);
+})
+
+.controller('CommentCtrl', function ($rootScope, sailsResource) {
+
+  var self = this;
+  var comment = sailsResource('Comment');
+
+  this.commentResource = comment;
+  this.commentForm = new comment();
+  this.commentTypes = comment.query();
+
+  this.add = function () {
+    var currentPostId = $rootScope.currentPost.id;
+    console.log('currentPostId is ' + currentPostId);
+    self.commentForm.$save(function (newcomment) {
+      self.commentTypes.push(newcomment);
+    });
+    self.commentForm = new comment();
+  };
+
+  this.cancel = function () {
+    self.commentForm = new comment();
+  };
+
+  this.deleteComment = function (comment) {
+    comment.$delete();
+  };
+
+  this.editComment = function (comment) {
+    comment.$editing = true;
+  };
+
+  this.saveComment = function (comment) {
+    comment.$save();
+    comment.$editing = false;
+  };
+
+  this.causeError = function () {
+    comment.notFound(
+      function (response) {
+      },
+      function (response) {
+        self.error = response.statusCode;
+      });
+  };
+
+  $rootScope.$on('$sailsResourceCreated', function () {
+    self.created++;
+  });
+
+  $rootScope.$on('$sailsResourceUpdated', function () {
+    self.updated++;
+  });
+
+  $rootScope.$on('$sailsResourceDestroyed', function () {
+    self.destroyed++;
+  });
+
+  console.log("Value of parent " + $rootScope.value);
 })
