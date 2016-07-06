@@ -82,10 +82,29 @@ angular.module('myApp.blog', ['ngRoute'])
   var postUrlToTitle = $location.path().split("/");
   var postTitle = postUrlToTitle[2].split('_').join(' ');
 
-  var blogPostTitle = sailsResource('Blog').get({ title: postTitle });
+  var currentBlogPost = sailsResource('Blog').get({ title: postTitle }, function(data) {
+    var title = data.title;
+    var post = data.post;
+    var image = data.image;
+    var comment = data.comment
+    var id = data.id;
 
-  this.blogPost = blogPostTitle;
-  $rootScope.currentPost= this.blogPost;
+    const blogPostDetail = {
+    'title' : data.title,
+    'post' : data.post,
+    'image' : data.image,
+    'comment' : data.comment,
+    'id' : data.id
+    };
+
+    console.log(blogPostDetail['title'] + ', ' + blogPostDetail['post'] + ', ' + blogPostDetail['image'] + ', ' + blogPostDetail['comment'] + ', ' + blogPostDetail['id']);
+  });
+
+
+
+
+  this.blogPost = currentBlogPost;
+
 })
 
 .controller('CommentCtrl', function ($rootScope, sailsResource) {
@@ -97,11 +116,13 @@ angular.module('myApp.blog', ['ngRoute'])
   this.commentForm = new comment();
   this.commentTypes = comment.query();
 
-  console.log('comment 2.4');
+  // console.log('comment 2.6');
+
+
+    // var currentPostId = $rootScope.currentPost.id;
+    // console.log('currentPostId is ' + currentPostId);
 
   this.add = function () {
-    var currentPostId = $rootScope.currentPost.id;
-    console.log('currentPostId is ' + currentPostId);
     // comment.reply.commentForm.comment = currentPostId;
     self.commentForm.$save(function (newcomment) {
       self.commentTypes.push(newcomment);
@@ -146,6 +167,4 @@ angular.module('myApp.blog', ['ngRoute'])
   $rootScope.$on('$sailsResourceDestroyed', function () {
     self.destroyed++;
   });
-
-  console.log("Value of parent " + $rootScope.value);
 })
