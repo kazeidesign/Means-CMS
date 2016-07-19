@@ -7,7 +7,8 @@ angular.module('myApp', [
   'sailsResource',
   'myApp.blog',
   'myApp.admin',
-  'myApp.version'
+  'myApp.version',
+  'myApp.comment'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/blog'});
@@ -16,7 +17,7 @@ config(['$routeProvider', function($routeProvider) {
 .filter('underscoreless',function() {
     return function(input) {
         if (input) {
-            return input.split(' ').join('_');    
+            return input.split(' ').join('_');
         }
     }
 })

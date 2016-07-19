@@ -1,0 +1,21 @@
+<form ng-submit="$ctrl.add()">
+    <md-card class="container_add">
+        <md-input-container class="input_container_add">
+            <label>Name</label>
+            <input ng-model="$ctrl.commentForm.name">
+            <i ng-click="$ctrl.cancel()" class="material-icons input_container_add--cancel">clear</i>
+        </md-input-container>
+        <md-input-container class="input_container_add">
+            <label>Email</label>
+            <input ng-model="$ctrl.commentForm.email">
+            <i ng-click="$ctrl.cancel()" class="material-icons input_container_add--cancel">clear</i>
+        </md-input-container>
+        <md-input-container class="input_container_add">
+            <label>Reply</label>
+            <input ng-model="$ctrl.commentForm.reply">
+            <i ng-click="$ctrl.cancel()" class="material-icons input_container_add--cancel">clear</i>
+        </md-input-container>
+
+    </md-card>
+    <md-button class=" md-whiteframe-4dp md-fab md-primary button_add" type="submit"><i class="material-icons icon_add">add</i></md-button>
+</form>

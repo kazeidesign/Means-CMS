@@ -1,6 +1,6 @@
 # MEAN-Sails-CMS
 
-CMS with MEAN stack with Sails.js = [Mean-Sails-Stack](github.com/kazeidesign/Mean-Sails-Stack).
+CMS with MEAN stack with Sails.js = [Mean-Sails-Stack](http://github.com/kazeidesign/Mean-Sails-Stack).
 
 <!--
 ## Ready to use

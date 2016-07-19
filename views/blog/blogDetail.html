@@ -23,7 +23,8 @@
 </md-card>
 
 <h2>Comments</h2>
-<div class="" ng-controller="CommentCtrl as reply">
+<comment-associate associate="{{ post.blogPost.id }}"></comment-associate>
+<!-- <div class="" ng-controller="CommentCtrl as reply">
   <form ng-submit="reply.add()">
       <md-card class="container_add">
           <md-input-container class="input_container_add">
@@ -48,7 +49,7 @@
       </md-card>
       <md-button class=" md-whiteframe-4dp md-fab md-primary button_add" type="submit"><i class="material-icons icon_add">add</i></md-button>
   </form>
-</div>
+</div> -->
 
 <md-card ng-repeat="comment in post.blogPost.comments">
     <md-card-title>
