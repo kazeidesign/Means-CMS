@@ -23,45 +23,20 @@
 </md-card>
 
 <h2>Comments</h2>
-<comment-associate associate="{{ post.blogPost.id }}"></comment-associate>
-<!-- <div class="" ng-controller="CommentCtrl as reply">
-  <form ng-submit="reply.add()">
-      <md-card class="container_add">
-          <md-input-container class="input_container_add">
-              <label>Name</label>
-              <input ng-model="reply.commentForm.name">
-              <i ng-click="reply.cancel()" class="material-icons input_container_add--cancel">clear</i>
-          </md-input-container>
-          <md-input-container class="input_container_add">
-              <label>Email</label>
-              <input ng-model="reply.commentForm.email">
-              <i ng-click="reply.cancel()" class="material-icons input_container_add--cancel">clear</i>
-          </md-input-container>
-          <md-input-container class="input_container_add">
-              <label>Reply</label>
-              <input ng-model="reply.commentForm.reply">
-              <i ng-click="reply.cancel()" class="material-icons input_container_add--cancel">clear</i>
-          </md-input-container>
-          <md-input-container class="input_container_add">
-              <label>Blog id</label>
-              <input type="text" ng-init="reply.commentForm.comment = [value]" ng-value="post.blogPost.id" ng-model="reply.commentForm.comment">
-          </md-input-container>
-      </md-card>
-      <md-button class=" md-whiteframe-4dp md-fab md-primary button_add" type="submit"><i class="material-icons icon_add">add</i></md-button>
-  </form>
-</div> -->
 
-<md-card ng-repeat="comment in post.blogPost.comments">
+<comment-associate associate="{{ post.blogPost.id }}"></comment-associate>
+
+<md-card ng-repeat="comments in post.blogPost.comments">
     <md-card-title>
         <md-card-title-text>
             <span class="md-headline">
-                {{ comment.name }} | {{ comment.email }}
+                {{ comments.name }} | {{ comments.email }}
             </span>
         </md-card-title-text>
     </md-card-title>
     <md-card-content>
         <p>
-            {{ comment.reply }}
+            {{ comments.reply }}
         </p>
     </md-card-content>
 </md-card>

@@ -4,11 +4,11 @@ angular.module('myApp.comment', [])
   bindings: {
     associate: '@'
   },
-  controller: 'commentDetailCtrl',
+  controller: 'commentCtrl',
   templateUrl : 'components/cp_comment.html'
 })
 
-.controller('commentDetailCtrl', function ($rootScope, sailsResource, $element, $attrs) {
+.controller('commentCtrl', function ($rootScope, sailsResource, $element, $attrs) {
 
   var self = this;
   var comment = sailsResource('Comment');
