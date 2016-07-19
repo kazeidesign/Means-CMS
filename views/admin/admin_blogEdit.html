@@ -1,38 +1,46 @@
-<md-card>
-    <img ng-src="{{ post.blogPost.image }}" class="md-card-image" alt="Washed Out" flex="40">
-    <md-card-title>
-        <md-card-title-text>
-            <span class="md-headline">
-                {{ post.blogPost.title }}
-            </span>
-        </md-card-title-text>
-    </md-card-title>
-    <md-card-content>
-          <textarea name="name" rows="8" cols="100%"  ng-model="post.blogPost.post"></textarea>
-        <ul>
-            <li ng-repeat="category in post.blogPost.tags">
-            {{ category.tags }}</li>
-        </ul>
-    </md-card-content>
-    <md-card-actions layout="row" layout-align="end center">
-        <md-button ng-click="post.saveBlog(post.blogPost)">Save</md-button>
-        <md-button ng-click="post.deleteBlog(post.blogPost)">Delete</md-button>
-    </md-card-actions>
-</md-card>
+<h1>
+   {{ post.blogPost.title }}
+</h1>
 
-<h2>Comments</h2>
+<div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Article">
+        <md-content class="md-padding">
+              <img ng-src="{{ post.blogPost.image }}" class="md-card-image" alt="Washed Out" flex="40">
+              <br><br>
+                    <textarea name="name" rows="8" cols="100%"  ng-model="post.blogPost.post"></textarea>
+                    <ul>
+                        <li ng-repeat="category in post.blogPost.tags">
+                        {{ category.tags }}</li>
+                    </ul>
 
-<md-card ng-repeat="comment in post.blogPost.comments">
-    <md-card-title>
-        <md-card-title-text>
-            <span class="md-headline">
-                {{ comment.name }} | {{ comment.email }}
-            </span>
-        </md-card-title-text>
-    </md-card-title>
-    <md-card-content>
-        <p>
-            {{ comment.reply }}
-        </p>
-    </md-card-content>
-</md-card>
+                    <md-button ng-click="post.saveBlog(post.blogPost)">Save</md-button>
+                    <md-button ng-click="post.deleteBlog(post.blogPost)">Delete</md-button>
+          </md-card>
+        </md-content>
+      </md-tab>
+      <md-tab label="Comments">
+        <md-content class="md-padding">
+          <md-card ng-repeat="comment in post.blogPost.comments">
+              <md-card-title>
+                  <md-card-title-text>
+                      <span class="md-headline">
+                          {{ comment.name }} | {{ comment.email }}
+                      </span>
+                  </md-card-title-text>
+              </md-card-title>
+              <md-card-content>
+                  <p>
+                      {{ comment.reply }}
+                  </p>
+              </md-card-content>
+          </md-card>
+
+          <h4>Add new comment</h4>
+
+          <comment-associate associate="{{ post.blogPost.id }}"></comment-associate>
+        </md-content>
+      </md-tab>
+  </md-content>
+</div>
