@@ -1,6 +1,6 @@
 angular.module('myApp.comment', [])
 
-.component('commentAssociate', {
+.component('commentForm', {
   bindings: {
     associate: '@'
   },
