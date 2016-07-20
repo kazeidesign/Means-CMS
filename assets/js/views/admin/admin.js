@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.admin', ['ngRoute', 'textAngular'])
+angular.module('myApp.admin', ['ngRoute', 'textAngular', 'ui.ace'])
 
 .controller('AdminCtrl', [function() {
 

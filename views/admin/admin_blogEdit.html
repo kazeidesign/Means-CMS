@@ -9,8 +9,31 @@
         <md-content class="md-padding">
               <img ng-src="{{ post.blogPost.image }}" class="md-card-image" alt="Washed Out" flex="40">
               <br><br>
-                    <textarea class="u-textarea" name="name" rows="8" cols="100%"  ng-model="post.blogPost.post"></textarea>
-                    <text-angular ng-model="post.blogPost.post"></text-angular>
+
+              <div ng-cloak>
+                <md-content class="md-padding-0 u-right">
+                  <md-tabs md-dynamic-height md-border-bottom>
+                    <md-tab label="Visual">
+                      <md-content class="md-padding">
+                        <text-angular ng-model="post.blogPost.post"></text-angular>
+                      </md-content>
+                    </md-tab>
+                    <md-tab label="Editor">
+                      <md-content class="md-padding">
+                        <div  ui-ace="{
+              useWrapMode : true,
+              showGutter: true,
+              theme:'twilight',
+              mode: 'html',
+              firstLineNumber: 5,
+              onLoad: aceLoaded,
+              onChange: aceChanged
+            }" ng-model="post.blogPost.post"></div>
+                  </md-content>
+                    </md-tab>
+                  </md-tabs>
+                </md-content>
+              </div>
                     <ul>
                         <li ng-repeat="category in post.blogPost.tags">
                         {{ category.tags }}</li>

@@ -1,10 +1,6 @@
 <img ng-src="{{ folio.pageFolio.image }}" class="md-card-image" alt="Washed Out" flex="60">
 <br>
 <h2>{{ folio.pageFolio.title }}</h2>
-<p>
-
-
-
   <div ng-cloak>
     <md-content class="md-padding-0 u-right">
       <md-tabs md-dynamic-height md-border-bottom>
@@ -15,16 +11,20 @@
         </md-tab>
         <md-tab label="Editor">
           <md-content class="md-padding">
-        <textarea class="u-textarea" name="name" rows="8" cols="100%"  ng-model="folio.pageFolio.article"></textarea>
+            <div  ui-ace="{
+  useWrapMode : true,
+  showGutter: true,
+  theme:'twilight',
+  mode: 'html',
+  firstLineNumber: 5,
+  onLoad: aceLoaded,
+  onChange: aceChanged
+}" ng-model="folio.pageFolio.article"></div>
       </md-content>
         </md-tab>
       </md-tabs>
     </md-content>
   </div>
-
-
-</p>
-<br>
 <ul>
   <li ng-repeat="categories in folio.pageFolio.category">
     {{ categories.category }}</li>
