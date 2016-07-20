@@ -9,7 +9,8 @@
         <md-content class="md-padding">
               <img ng-src="{{ post.blogPost.image }}" class="md-card-image" alt="Washed Out" flex="40">
               <br><br>
-                    <textarea name="name" rows="8" cols="100%"  ng-model="post.blogPost.post"></textarea>
+                    <textarea class="u-textarea" name="name" rows="8" cols="100%"  ng-model="post.blogPost.post"></textarea>
+                    <text-angular ng-model="post.blogPost.post"></text-angular>
                     <ul>
                         <li ng-repeat="category in post.blogPost.tags">
                         {{ category.tags }}</li>

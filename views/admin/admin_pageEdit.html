@@ -2,7 +2,27 @@
 <br>
 <h2>{{ folio.pageFolio.title }}</h2>
 <p>
-  <textarea name="name" rows="8" cols="100%"  ng-model="folio.pageFolio.article"></textarea>
+
+
+
+  <div ng-cloak>
+    <md-content class="md-padding-0 u-right">
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Visual">
+          <md-content class="md-padding">
+            <text-angular ng-model="folio.pageFolio.article"></text-angular>
+          </md-content>
+        </md-tab>
+        <md-tab label="Editor">
+          <md-content class="md-padding">
+        <textarea class="u-textarea" name="name" rows="8" cols="100%"  ng-model="folio.pageFolio.article"></textarea>
+      </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-content>
+  </div>
+
+
 </p>
 <br>
 <ul>

@@ -10,9 +10,7 @@
         </md-card-title-text>
     </md-card-title>
     <md-card-content>
-        <p>
-            {{ folio.article | limitTo:150 }}
-        </p>
+      <div ng-bind-html="folio.article | limitTo:150"></div>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
         <md-button ng-href="#/{{ folio.title | underscoreless }}">See more</md-button>

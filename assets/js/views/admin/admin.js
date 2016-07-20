@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.admin', ['ngRoute'])
+angular.module('myApp.admin', ['ngRoute', 'textAngular'])
 
 .controller('AdminCtrl', [function() {
 
@@ -66,7 +66,7 @@ angular.module('myApp.admin', ['ngRoute'])
 
   this.pageResource = page;
   this.pageForm = new page();
-    this.pageTypes = page.query();
+  this.pageTypes = page.query();
 
   // Acces to a page
   var folioUrlToTitle = $location.path().split("/");
