@@ -5,15 +5,13 @@ angular.module('myApp', [
   'ngRoute',
   'ngMaterial',
   'sailsResource',
+  'myApp.route',
   'myApp.page',
   'myApp.blog',
   'myApp.admin',
   'myApp.version',
   'myApp.comment'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/blog'});
-}])
+])
 
 .filter('underscoreless',function() {
     return function(input) {

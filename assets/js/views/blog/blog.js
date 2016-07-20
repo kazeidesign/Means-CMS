@@ -2,20 +2,6 @@
 
 angular.module('myApp.blog', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider
-  .when('/blog', {
-    templateUrl: 'blog/blog.html',
-    controller: 'BlogCtrl as post'
-  })
-
-  .when('/blog/:title', {
-    templateUrl: 'blog/blogDetail.html',
-    controller: 'BlogDetailCtrl as post'
-  })
-  ;
-}])
-
 .controller('BlogCtrl', function ($rootScope, sailsResource) {
 
   var self = this;

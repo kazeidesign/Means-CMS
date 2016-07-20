@@ -62,7 +62,7 @@ module.exports.connections = {
      port: 27017,
   //   user: 'username', //optional
   //   password: 'password', //optional
-  //   database: 'your_mongo_db_name_here' //optional
+    database: 'MeansCMS' //optional
    },
 
   /***************************************************************************

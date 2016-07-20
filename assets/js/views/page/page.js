@@ -2,20 +2,6 @@
 
 angular.module('myApp.page', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider
-  .when('/pages', {
-    templateUrl: 'page/pages.html',
-    controller: 'PageCtrl as folio'
-  })
-
-  .when('/:title', {
-    templateUrl: 'page/pageDetail.html',
-    controller: 'PageDetailCtrl as folio'
-  })
-  ;
-}])
-
 .controller('PageCtrl', function ($rootScope, sailsResource) {
 
   var self = this;
