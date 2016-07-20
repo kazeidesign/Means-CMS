@@ -37,6 +37,16 @@ angular.module('myApp.route', ['ngRoute'])
     controller: 'AdminBlogEditCtrl as post'
   })
 
+  .when('/admin/pages', {
+    templateUrl: 'admin/admin_pages.html',
+    controller: 'PageCtrl as folio'
+  })
+
+  .when('/admin/pages/:title', {
+    templateUrl: 'admin/admin_pageEdit.html',
+    controller: 'AdminPageEditCtrl as folio'
+  })
+
   // ROUTES for pages
 
   .when('/pages', {
