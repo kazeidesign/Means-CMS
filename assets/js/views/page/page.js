@@ -11,53 +11,6 @@ angular.module('myApp.page', ['ngRoute'])
   this.pageForm = new page();
   this.pageTypes = page.query();
 
-
-
-  this.add = function () {
-    self.pageForm.$save(function (newpage) {
-      self.pageTypes.push(newpage);
-    });
-    self.pageForm = new page();
-  };
-
-  this.cancel = function () {
-    self.pageForm = new page();
-  };
-
-  this.deletePage = function (page) {
-    page.$delete();
-  };
-
-  this.editPage = function (page) {
-    page.$editing = true;
-  };
-
-  this.savePage = function (page) {
-    page.$save();
-    page.$editing = false;
-  };
-
-  this.causeError = function () {
-    page.notFound(
-      function (response) {
-      },
-      function (response) {
-        self.error = response.statusCode;
-      });
-  };
-
-  $rootScope.$on('$sailsResourceCreated', function () {
-    self.created++;
-  });
-
-  $rootScope.$on('$sailsResourceUpdated', function () {
-    self.updated++;
-  });
-
-  $rootScope.$on('$sailsResourceDestroyed', function () {
-    self.destroyed++;
-  });
-
 })
 
 .controller('PageDetailCtrl', function ($rootScope, sailsResource, $location, $routeParams) {

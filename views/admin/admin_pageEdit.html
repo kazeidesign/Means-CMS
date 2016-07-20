@@ -1,0 +1,14 @@
+<img ng-src="{{ folio.pageFolio.image }}" class="md-card-image" alt="Washed Out" flex="60">
+<br>
+<h2>{{ folio.pageFolio.title }}</h2>
+<p>
+  <textarea name="name" rows="8" cols="100%"  ng-model="folio.pageFolio.article"></textarea>
+</p>
+<br>
+<ul>
+  <li ng-repeat="categories in folio.pageFolio.category">
+    {{ categories.category }}</li>
+</ul>
+
+<md-button ng-click="folio.savePage(folio.pageFolio)">Save</md-button>
+<md-button ng-click="folio.deletePage(folio.pageFolio)">Delete</md-button>
