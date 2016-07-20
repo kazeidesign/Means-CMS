@@ -64,9 +64,9 @@ angular.module('myApp.admin', ['ngRoute'])
   var self = this;
   var page = sailsResource('Page');
 
-  this.pageTypes = page.query();
   this.pageResource = page;
   this.pageForm = new page();
+    this.pageTypes = page.query();
 
   // Acces to a page
   var folioUrlToTitle = $location.path().split("/");
