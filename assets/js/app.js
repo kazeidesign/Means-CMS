@@ -5,6 +5,7 @@ angular.module('myApp', [
   'ngRoute',
   'ngMaterial',
   'sailsResource',
+  'myApp.page',
   'myApp.blog',
   'myApp.admin',
   'myApp.version',

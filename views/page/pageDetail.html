@@ -1,0 +1,11 @@
+<img ng-src="{{ folio.pageFolio.image }}" class="md-card-image" alt="Washed Out" flex="60">
+<br>
+<h2>{{ folio.pageFolio.title }}</h2>
+<p>
+  {{ folio.pageFolio.article }}
+</p>
+<br>
+<ul>
+  <li ng-repeat="categories in folio.pageFolio.category">
+    {{ categories.category }}</li>
+</ul>

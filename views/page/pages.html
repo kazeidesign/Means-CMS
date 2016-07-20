@@ -1,0 +1,20 @@
+<p>This is the partial for Pages in /page.</p>
+
+<md-card ng-repeat="folio in folio.pageTypes">
+    <img ng-src="{{ folio.image }}" class="md-card-image" alt="Washed Out" flex="40">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">
+                {{ folio.title }}
+            </span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <p>
+            {{ folio.article | limitTo:150 }}
+        </p>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-href="#/{{ folio.title | underscoreless }}">See more</md-button>
+    </md-card-actions>
+</md-card>
