@@ -42,6 +42,11 @@ angular.module('myApp.route', ['ngRoute'])
     controller: 'PageCtrl as folio'
   })
 
+  .when('/admin/pages/new', {
+    templateUrl: 'admin/admin_pageNew.html',
+    controller: 'AdminPageEditCtrl as folio'
+  })
+
   .when('/admin/pages/:title', {
     templateUrl: 'admin/admin_pageEdit.html',
     controller: 'AdminPageEditCtrl as folio'

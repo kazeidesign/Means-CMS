@@ -45,6 +45,7 @@ angular.module('myApp.admin', ['ngRoute'])
 
   $rootScope.$on('$sailsResourceCreated', function () {
     self.created++;
+    $location.path('/admin/blog');
   });
 
   $rootScope.$on('$sailsResourceUpdated', function () {
@@ -62,6 +63,11 @@ angular.module('myApp.admin', ['ngRoute'])
 
   var self = this;
   var page = sailsResource('Page');
+
+  this.pageTypes = page.query();
+  this.pageResource = page;
+  this.pageForm = new page();
+
   // Acces to a page
   var folioUrlToTitle = $location.path().split("/");
   var folioTitle = folioUrlToTitle[3].split('_').join(' ');
@@ -105,6 +111,7 @@ angular.module('myApp.admin', ['ngRoute'])
 
   $rootScope.$on('$sailsResourceCreated', function () {
     self.created++;
+    $location.path('/admin/pages');
   });
 
   $rootScope.$on('$sailsResourceUpdated', function () {
@@ -113,6 +120,7 @@ angular.module('myApp.admin', ['ngRoute'])
 
   $rootScope.$on('$sailsResourceDestroyed', function () {
     self.destroyed++;
+    $location.path('/admin/pages');
   });
 
 

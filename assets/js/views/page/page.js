@@ -6,9 +6,6 @@ angular.module('myApp.page', ['ngRoute'])
 
   var self = this;
   var page = sailsResource('Page');
-
-  this.pageResource = page;
-  this.pageForm = new page();
   this.pageTypes = page.query();
 
 })
