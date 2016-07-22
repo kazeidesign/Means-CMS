@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.admin', ['ngRoute', 'textAngular', 'ui.ace'])
+angular.module('myApp.admin', ['ngRoute', 'textAngular', 'ui.ace', 'ngFileUpload'])
 
 .controller('AdminCtrl', [function() {
 
@@ -122,6 +122,43 @@ angular.module('myApp.admin', ['ngRoute', 'textAngular', 'ui.ace'])
     self.destroyed++;
     $location.path('/admin/pages');
   });
+
+
+})
+
+.controller('MyCtrl', ['$rootScope', 'Upload', '$timeout', function ($rootScope, Upload, $timeout) {
+    $rootScope.uploadFiles = function(files, errFiles) {
+        $rootScope.files = files;
+        $rootScope.errFiles = errFiles;
+        angular.forEach(files, function(file) {
+            file.upload = Upload.upload({
+                url: '/media',
+                data: {file: file.name}
+            });
+
+            file.upload.then(function (response) {
+                $timeout(function () {
+                    file.result = response.data;
+                });
+            }, function (response) {
+                if (response.status > 0)
+                    $rootScope.errorMsg = response.status + ': ' + response.data;
+            }, function (evt) {
+                file.progress = Math.min(100, parseInt(100.0 *
+                                         evt.loaded / evt.total));
+            });
+        });
+    }
+}])
+
+.controller('MediaCtrl', function ($rootScope, sailsResource, $location) {
+
+  var self = this;
+  var media = sailsResource('Media');
+
+  this.mediaResource = media;
+  this.mediaForm = new media();
+  this.mediaTypes = media.query();
 
 
 })
